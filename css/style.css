@@ -1,0 +1,149 @@
+body {
+    background-color: rgb(241, 241, 241);
+}
+
+.nav-link,
+.navbar-brand,
+h1 {
+    color: white;
+}
+
+.navbar {
+    background-color: #000005bd;
+    font-size: 110%;
+}
+
+#navbar_str:hover,
+#navbar_str:focus,
+#select_name:hover,
+#select_name:focus {
+    color: white;
+    border-radius: 10px 10px 10px 10px;
+    background-color: #585858;
+}
+
+#navbar_str_2:hover,
+#navbar_str_2:focus {
+    color: lightgray;
+    border-radius: 10px 10px 10px 10px;
+}
+
+#reg {
+    text-align: left
+}
+
+.container {
+    text-align: center;
+}
+
+#scritta {
+    font-size: 100%;
+}
+
+#mail,
+#password,
+#user,
+#buttonContainer,
+#loginTitle {
+    text-align: center;
+}
+
+#loginTitle {
+    margin-bottom: 5%;
+    color: black;
+}
+
+#form {
+    background-color: rgb(240, 240, 240);
+    padding-top: 4%;
+    padding-right: 25%;
+    padding-left: 25%;
+    padding-bottom: 2%;
+}
+
+#formdiv {
+    padding-top: 2%;
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-bottom: 2%;
+}
+
+#form2 {
+    background-color: rgb(240, 240, 240);
+    padding: 3%;
+}
+
+#rd {
+    font-weight: bolder;
+}
+
+#lrd {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.center-div {
+    display: flex;
+    min-height: calc(100vh - 140px);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#prd,
+#prenotati {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#prenotati {
+    width: 50%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: lightgray;
+}
+
+#prd_right {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: right;
+}
+
+#select_idx:active {
+    background-color: lightslategray;
+    color: black;
+}
+
+#link_nome{
+    color: black;
+}
+#link_nome:hover{
+    color: gray;
+}
+
+@media (max-width: 770px) {
+    #form {
+        width: 100%;
+
+        padding-right: 2%;
+        padding-left: 2%;
+    }
+
+    #form2 {
+        width: 100%;
+        height: fit-content;
+    }
+}
+
+@media (max-width: 990px) {
+    #saluto {
+        display: none;
+    }
+
+    #prenotati {
+        width: 100%;
+    }
+}
