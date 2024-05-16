@@ -124,6 +124,20 @@ h1 {
     color: gray;
 }
 
+/* Arrotondo i bordi della tabella*/
+#tabella tr:last-child th:first-child{
+    border-radius: 20px 0px 0px 0px;
+}
+#tabella tr:last-child th:last-child{
+    border-radius: 0px 20px 0px 0px;
+}
+#tabella tr:last-child td:last-child{
+    border-radius: 0px 0px 20px 0px;
+}
+#tabella tr:last-child td:first-child{
+    border-radius: 0px 0px 0px 20px;
+}
+
 @media (max-width: 770px) {
     #form {
         width: 100%;

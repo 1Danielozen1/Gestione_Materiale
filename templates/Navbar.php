@@ -21,28 +21,23 @@
                     echo '<li class="nav-item"><a class="nav-link" href="' . $_POST['path'] . '/pages/TabellaDati.php" id = "navbar_str">Noleggi</a></li>';
                 }
                 ?>
-                <?php
-                if (!isset($_SESSION['no_cat'])) {
-                    echo '<li class="nav-item dropdown active">
+                <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" id="navbar_str" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Categorie
                     </a>
                     <ul class="dropdown-menu" style="background-color: lightgray;">
-                    ';
-
-                    // Carico le categorie nella select
-                    $stmt = $conn->prepare("SELECT * FROM categorie");
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    echo '<li><a class="dropdown-item" href="' . $_POST['percorso'] . '" id = "select_idx">Tutto</a></li>';
-                    while ($row = $result->fetch_assoc()) {
-                        echo '<li><a class="dropdown-item" href="' . $_POST['percorso'] . '?id_cat=' . $row['id'] . '" id = "select_idx">' . $row['categoria'] . '</a></li>';
-                    }
-
-                    echo '</ul>
-                    </li>';
-                }
-                ?>
+                        <?php
+                        // Carico le categorie nella select
+                        $stmt = $conn->prepare("SELECT * FROM categorie");
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        echo '<li><a class="dropdown-item" href="' . $_POST['percorso'] . '" id = "select_idx">Tutto</a></li>';
+                        while ($row = $result->fetch_assoc()) {
+                            echo '<li><a class="dropdown-item" href="' . $_POST['percorso'] . '?id_cat=' . $row['id'] . '" id = "select_idx">' . $row['categoria'] . '</a></li>';
+                        }
+                        ?>
+                    </ul>
+                </li>
             </ul>
             <!-- Fine Navbar links -->
             <?php
