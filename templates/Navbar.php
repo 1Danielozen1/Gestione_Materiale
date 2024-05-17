@@ -16,9 +16,20 @@
                 <!-- Navbar links -->
                 <?php
                 // Percorso per la pagina degli oggetti prenotati
-                echo '<li class="nav-item"><a class="nav-link" href="' . $_POST['path'] . '/pages/OggettiPrenotati.php" id = "navbar_str">Oggetti prenotati</a></li>';
+                if($_SESSION["ruolo"] == 1){
+                    echo '<li class="nav-item"><a class="nav-link" href="' . $_POST['path'] . '/pages/OggettiPrenotati.php" id = "navbar_str">Oggetti prenotati</a></li>';
+                }
                 if ($_SESSION["ruolo"] != 1) {
                     echo '<li class="nav-item"><a class="nav-link" href="' . $_POST['path'] . '/pages/TabellaDati.php" id = "navbar_str">Noleggi</a></li>';
+                    echo'<li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" id="navbar_str" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Aggiungi
+                    </a>
+                    <ul class="dropdown-menu" style="background-color: lightgray;">
+                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/AggiungiOggetto.php" id = "select_idx">Oggetto</a></li>
+                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/AggiungiCategoria.php" id = "select_idx">Categoria</a></li>
+                    </ul>
+                </li>';
                 }
                 ?>
                 <li class="nav-item dropdown active">
@@ -46,17 +57,19 @@
             if (count($_SESSION['oggetti']) > 0) {
                 $img = '/img/cart-fill.svg';
             }
-            echo '<div class = "col" id = "prd_right">
-                    <a class = "link-underline link-underline-opacity-0" href="' . $_POST['path'] . '/pages/Carrello.php" style = "margin-right: 2%">
+            echo '<div class = "col" id = "prd_right">';
+            if ($_SESSION['ruolo'] == 1) {
+                echo '<a class = "link-underline link-underline-opacity-0" href="' . $_POST['path'] . '/pages/Carrello.php" style = "margin-right: 2%">
                     <button type="button" class="btn btn-light">
                     <img src="' . $_POST['path'] . '' . $img . '" alt="Icona Carrello">
                     </button>
-                    </a>
-                    <t style="color: white; font-weight:bolder; margin-right:1%;" id = "saluto">Benvenuto, ' . $_SESSION["nome"] . ' ' . $_SESSION["cognome"] . '</t>
+                    </a>';
+            }
+            echo '<t style="color: white; font-weight:bolder; margin-right:1%;" id = "saluto">Benvenuto, ' . $_SESSION["nome"] . ' ' . $_SESSION["cognome"] . '</t>
                     <a href="' . $_POST['path'] . '/pages/Login.php?destroy=1">
                     <button type="submit" class="btn btn-secondary fs-5 btn-outline-light">Log Out</button>
                     </a>
-                </div>';
+                    </div>';
             ?>
         </div>
     </div>
