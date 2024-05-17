@@ -28,14 +28,14 @@ $stmt = $conn->prepare($query);
 if (isset($_GET['id_u'])) {
     if (isset($_GET['id_cat'])) {
         $stmt->bind_param("ii", $_GET['id_u'], $_GET['id_cat']);
-        $string = $string.'id_u=' . $_GET['id_u'] . '&id_cat=' . $_GET['id_cat'] . '';
+        $string = $string . 'id_u=' . $_GET['id_u'] . '&id_cat=' . $_GET['id_cat'] . '';
     } else {
         $stmt->bind_param("i", $_GET['id_u']);
-        $string = $string.'id_u=' . $_GET['id_u'] . '';
+        $string = $string . 'id_u=' . $_GET['id_u'] . '';
     }
-}else if (isset($_GET['id_cat'])) {
+} else if (isset($_GET['id_cat'])) {
     $stmt->bind_param("i", $_GET['id_cat']);
-    $string = $string.'id_cat=' . $_GET['id_cat'] . '';
+    $string = $string . 'id_cat=' . $_GET['id_cat'] . '';
 }
 
 $stmt->execute();
@@ -52,4 +52,4 @@ $_SESSION['tabella'] = 'ok';
 $stmt->close();
 $conn->close();
 
-header('location: ../pages/TabellaDati.php'.$string.'');
+header('location: ../pages/TabellaDati.php' . $string . '');
