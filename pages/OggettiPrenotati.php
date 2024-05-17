@@ -15,7 +15,7 @@ include_once("../templates/Navbar.php");
 
 
 // Ottengo tutti gli oggetti prenotati da un determinato utente
-$stmt = $conn->prepare("SELECT oggetti.nome, oggetti.categoria, noleggio_materiali.*
+$stmt = $conn->prepare("SELECT oggetti.nome, oggetti.categoria, noleggio_materiali.*, oggetti.immagine
                             FROM noleggio_materiali, oggetti
                             WHERE idUtente = ?
                                 AND noleggio_materiali.idOggetto = oggetti.id");
@@ -65,7 +65,7 @@ function elementiPrenotatiCard($row)
     echo '<div class="card mb-3" style="max-width: 540px; background-color: white;" id = "prenotati">
     <div class="row g-0">
     <div class="col-md-4">
-      <img src="../img/' . $row["idOggetto"] . '.png" style = "margin-top: 10%; margin-left: 15%" class="img-fluid rounded-start" alt="' . $row['nome'] . '">
+      <img src="'.$_POST['path'].'/' . $row["immagine"] . '" style = "margin-top: 10%; margin-left: 15%" class="img-fluid rounded-start" alt="' . $row['nome'] . '">
     </div>
     <div class="col-md-8">
       <div class="card-body">

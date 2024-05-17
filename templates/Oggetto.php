@@ -2,18 +2,25 @@
 
     <h2 style="color: black; text-align:center; margin-bottom:5%; margin-top: 2%; font-weight: bolder;">AGGIUNGI OGGETTO</h2>
 
-    <form id="formdiv" class="row shadow needs-validation rounded" action="../checks/AggingiOggetto.php" method="POST">
+    <form id="formdiv" enctype="multipart/form-data" class="row shadow needs-validation rounded" action="../checks/AggiungiOggetto.php" method="POST">
         <!-- Nome Oggetto -->
         <div class="col-md-4" id="reg" style="text-align: center;">
             <label id="user" class="text-black col-form-label fs-4">Nome Oggetto</label>
-            <input type="text" class="p-2 form-control" placeholder="Nome Oggetto" id="validationCustom01" name="nome_oggetto" pattern="[^'\x22]+" require>
+            <input type="text" class="p-2 form-control" placeholder="Nome Oggetto" id="validationCustom01" name="nome_oggetto" pattern="[^'\x22]+" required>
         </div>
         <!-- Fine Nome Oggetto -->
 
         <!-- Quantità -->
         <div class="col-md-4" id="reg" style="text-align: center;">
             <label id="user" class="text-black col-form-label fs-4">Quantità</label>
-            <input type="number" class="p-2 form-control" value="1" min="1" name="quantita" require>
+            <input type="number" class="p-2 form-control" value="1" min="1" name="quantita" required>
+            <?php
+            if (isset($_GET['error']) && $_GET['error'] == 1) {
+                echo "<div class='p-1 alert alert-danger' role='alert' style ='margin-top: 1%'>
+                            Quantità non accettata.
+                      </div>";
+            }
+            ?>
         </div>
         <!-- Fine Quantità -->
 
@@ -36,18 +43,25 @@
         <!-- Fine selezione categoria -->
 
         <!-- Descrizione -->
-        <div class="input-group mb-4">
+        <div class="input-group mb-3">
             <span class="input-group-text">Descrizione</span>
-            <textarea class="form-control" aria-label="Descrizione" placeholder="Scrivi qui..."></textarea>
+            <textarea class="form-control" aria-label="Descrizione" name="descrizione" placeholder="Scrivi qui...">Nessuna descrizione</textarea>
         </div>
         <!-- Fine Descrizione -->
 
-        <!-- Commento -->
-        <div class="input-group mb-4">
-            <span class="input-group-text">Commento</span>
-            <textarea class="form-control" aria-label="Commento" placeholder="Scrivi qui..."></textarea>
+        <!-- Immagine -->
+        <div class="row mb-4" id = 'lrd'>
+            <label id="categoria" class="text-black col-form-label fs-4">Immagine</label>
+            <input type="file" class="p-3 form-control" name="immagine" required>
+            <?php
+            if (isset($_GET['error']) && $_GET['error'] == 2) {
+                echo "<div class='p-1 alert alert-danger' role='alert' style ='margin-top: 1%'>
+                            Formato immagine non accettato.
+                      </div>";
+            }
+            ?>
         </div>
-        <!-- Fine Commento -->
+        <!-- Fine Immagine -->
 
         <!-- Aggiungi Button -->
         <div id="buttonContainer">

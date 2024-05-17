@@ -53,7 +53,7 @@ function elementiCarrelloCard($row, $count)
     echo '<div class="card mb-3" style="max-width: 540px; background-color: white;" id = "prenotati">
         <div class="row g-0">
         <div class="col-md-4">
-          <img src="../img/' . $row["id"] . '.png" style = "margin-top: 10%; margin-left: 15%" class="img-fluid rounded-start" alt="' . $row['nome'] . '">
+          <img src="'.$_POST['path'].'/' . $row["immagine"] . '" style = "margin-top: 10%; margin-left: 15%" class="img-fluid rounded-start" alt="' . $row['nome'] . '">
         </div>
         <div class="col-md-8">
           <div class="card-body">
