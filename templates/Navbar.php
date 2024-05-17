@@ -26,8 +26,8 @@
                         Aggiungi
                     </a>
                     <ul class="dropdown-menu" style="background-color: lightgray;">
-                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/AggiungiOggetto.php" id = "select_idx">Oggetto</a></li>
-                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/AggiungiCategoria.php" id = "select_idx">Categoria</a></li>
+                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/Aggiungi.php?agg=1" id = "select_idx">Oggetto</a></li>
+                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/Aggiungi.php?agg=2" id = "select_idx">Categoria</a></li>
                     </ul>
                 </li>';
                 }
