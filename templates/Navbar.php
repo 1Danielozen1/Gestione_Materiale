@@ -16,18 +16,18 @@
                 <!-- Navbar links -->
                 <?php
                 // Percorso per la pagina degli oggetti prenotati
-                if($_SESSION["ruolo"] == 1){
+                if ($_SESSION["ruolo"] == 1) {
                     echo '<li class="nav-item"><a class="nav-link" href="' . $_POST['path'] . '/pages/OggettiPrenotati.php" id = "navbar_str">Oggetti prenotati</a></li>';
                 }
                 if ($_SESSION["ruolo"] != 1) {
                     echo '<li class="nav-item"><a class="nav-link" href="' . $_POST['path'] . '/pages/TabellaDati.php" id = "navbar_str">Noleggi</a></li>';
-                    echo'<li class="nav-item dropdown active">
+                    echo '<li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" id="navbar_str" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Aggiungi
+                        Azioni
                     </a>
                     <ul class="dropdown-menu" style="background-color: lightgray;">
-                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/Aggiungi.php?agg=1" id = "select_idx">Oggetto</a></li>
-                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/Aggiungi.php?agg=2" id = "select_idx">Categoria</a></li>
+                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/Aggiungi.php?agg=1" id = "select_idx">Aggiungi Oggetto</a></li>
+                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/Aggiungi.php?agg=2" id = "select_idx">Aggiungi Categoria</a></li>
                     </ul>
                 </li>';
                 }

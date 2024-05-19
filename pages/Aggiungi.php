@@ -13,14 +13,16 @@ $_POST['percorso'] = "./Aggiungi.php";
 include_once("../templates/Header.php");
 include_once("../templates/Navbar.php");
 
-if(isset($_GET["agg"])){
-    if($_GET["agg"] == 1){
+if (isset($_GET["agg"])) {
+    if ($_GET["agg"] == 1) {
         include_once("../templates/Oggetto.php");
-    }elseif($_GET["agg"] == 2){
+    } elseif ($_GET["agg"] == 2) {
         include_once("../templates/Categoria.php");
-    }else{
+    } else {
         header("location: ../index.php");
     }
+} else {
+    header("location: ../index.php");
 }
 ?>
 

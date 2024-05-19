@@ -35,7 +35,7 @@ include_once("./templates/Navbar.php");
                 // La funzione "onclick" permette di richiamare una funzione javascript quando viene premuto un bottone.
                 echo '<div class="col"> 
             <div class="shadow card mx-auto" style="width: 18rem; padding: 2%; padding-bottom:0%; margin-bottom:3%;">
-            <img src="'.$_POST['path'].'/' . $row["immagine"] . '" class="card-img-top" alt="' . $row["nome"] . '">
+            <img src="' . $_POST['path'] . '/' . $row["immagine"] . '" class="card-img-top" style = "max-height: 210px;" alt="' . $row["nome"] . '">
             <div class="card-body">
             <b class="card-text">' . $row["nome"] . '</b><br><br>
             <button type="button" value = "' . $row["id"] . '" onclick = "idElemento(' . $row["id"] . ', ' . $row["categoria"] . ',' . "'" . '' . $row["nome"] . '' . "'" . ',' . $row["totQuantita"] . ',' . "'" . '' . $row["descrizione"] . '' . "'" . ',' . $row["prenotabile"] . ',' . $_SESSION["ruolo"] . ')" id = "prenotazione" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#mostaOggetti">Prenota</button>

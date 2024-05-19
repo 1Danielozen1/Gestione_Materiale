@@ -48,4 +48,4 @@ $conn->close();
 
 $_SESSION["oggetti"] = array();
 $_SESSION["quantita"] = array();
-header("Location: ../index.php");
+header("Location: ../pages/OggettiPrenotati.php");

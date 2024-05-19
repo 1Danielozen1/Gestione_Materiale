@@ -3,10 +3,25 @@
     <h2 style="color: black; text-align:center; margin-bottom:5%; margin-top: 2%; font-weight: bolder;">AGGIUNGI OGGETTO</h2>
 
     <form id="formdiv" enctype="multipart/form-data" class="row shadow needs-validation rounded" action="../checks/AggiungiOggetto.php" method="POST">
+        <?php
+        if (isset($_GET['success'])) {
+            echo "<div class='p-3 alert alert-success' id = 'prd' role='alert'>
+            Oggetto aggiunto correttamente.
+            </div>";
+        }
+        ?>
+
         <!-- Nome Oggetto -->
         <div class="col-md-4" id="reg" style="text-align: center;">
             <label id="user" class="text-black col-form-label fs-4">Nome Oggetto</label>
             <input type="text" class="p-2 form-control" placeholder="Nome Oggetto" id="validationCustom01" name="nome_oggetto" pattern="[^'\x22]+" required>
+            <?php
+            if (isset($_GET['error']) && $_GET['error'] == 3) {
+                echo "<div class='p-1 alert alert-danger' role='alert' style ='margin-top: 1%'>
+                            Oggetto già esistente.
+                      </div>";
+            }
+            ?>
         </div>
         <!-- Fine Nome Oggetto -->
 
@@ -50,7 +65,7 @@
         <!-- Fine Descrizione -->
 
         <!-- Immagine -->
-        <div class="row mb-4" id = 'lrd'>
+        <div class="row mb-4" id='lrd'>
             <label id="categoria" class="text-black col-form-label fs-4">Immagine</label>
             <input type="file" class="p-3 form-control" name="immagine" required>
             <?php
