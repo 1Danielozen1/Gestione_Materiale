@@ -3,7 +3,7 @@ require("../config/db_config.php");
 
 // Controllo se la quantità è corretta
 if ($_POST['quantita'] == 0 || !isset($_POST['quantita']) || $_POST['quantita'] == "") {
-    header("location: ../pages/Aggiungi.php?agg=1&error=1");
+    header("location: ../pages/Azioni.php?agg=1&error=1");
 } else {
     $prenotabile = 1;
 }
@@ -21,7 +21,7 @@ $row = $result->fetch_assoc();
 if (isset($row)) {
     $stmt->close();
     $conn->close();
-    header("location: ../pages/Aggiungi.php?agg=1&error=3");
+    header("location: ../pages/Azioni.php?agg=1&error=3");
 } else {
     // controllo se il type dell'immagine è tra quelli consentiti
     $type_consentiti = array("image/png", "image/jpeg", "image/jpg", "image/PNG");
@@ -29,7 +29,7 @@ if (isset($row)) {
     if (!in_array($type, $type_consentiti)) {
         $stmt->close();
         $conn->close();
-        header("location: ../pages/Aggiungi.php?agg=1&error=2");
+        header("location: ../pages/Azioni.php?agg=1&error=2");
     } else {
         // prendo il nome dell'immagine e la carico nella cartella img
         $nome = $_FILES["immagine"]["name"];
@@ -43,6 +43,6 @@ if (isset($row)) {
 
         $stmt->close();
         $conn->close();
-        header("location: ../pages/Aggiungi.php?agg=1&success=1");
+        header("location: ../pages/Azioni.php?agg=1&success=1");
     }
 }

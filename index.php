@@ -32,16 +32,23 @@ include_once("./templates/Navbar.php");
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
             if ($row["prenotabile"] != 0) {
+                $descrizione = '"' . $row["descrizione"] . '"';
+                if($_SESSION["ruolo"] != 1){
+                    $bottone = "Dettagli";
+                }else{
+                    $bottone = "Prenota";
+                }
+
                 // La funzione "onclick" permette di richiamare una funzione javascript quando viene premuto un bottone.
-                echo '<div class="col"> 
-            <div class="shadow card mx-auto" style="width: 18rem; padding: 2%; padding-bottom:0%; margin-bottom:3%;">
-            <img src="' . $_POST['path'] . '/' . $row["immagine"] . '" class="card-img-top" style = "max-height: 210px;" alt="' . $row["nome"] . '">
-            <div class="card-body">
-            <b class="card-text">' . $row["nome"] . '</b><br><br>
-            <button type="button" value = "' . $row["id"] . '" onclick = "idElemento(' . $row["id"] . ', ' . $row["categoria"] . ',' . "'" . '' . $row["nome"] . '' . "'" . ',' . $row["totQuantita"] . ',' . "'" . '' . $row["descrizione"] . '' . "'" . ',' . $row["prenotabile"] . ',' . $_SESSION["ruolo"] . ')" id = "prenotazione" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#mostaOggetti">Prenota</button>
-            </div>
-            </div>
-            </div>';
+                echo "<div class='col'> 
+                <div class='shadow card mx-auto' style='width: 18rem; padding: 2%; padding-bottom:0%; margin-bottom:3%;'>
+                <img src='" . $_POST['path'] . "/" . $row["immagine"] . "' class='card-img-top' style = 'max-height: 210px;' alt='" . $row["nome"] . "'>
+                <div class='card-body'>
+                <b class='card-text'>" . $row["nome"] . "</b><br><br>
+                <button type='button' value = '" . $row["id"] . "' onclick = 'idElemento(" . $row["id"] . ", " . $row["categoria"] . "," . '"' . "" . $row["nome"] . "" . '"' . "," . $row["totQuantita"] . "," . $row["prenotabile"] . "," . $_SESSION["ruolo"] . "," . htmlspecialchars($descrizione) . ")' id = 'prenotazione' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#mostaOggetti'>".$bottone."</button>
+                </div>
+                </div>
+                </div>";
             }
         }
         $stmt->close();
@@ -65,43 +72,46 @@ include_once("./templates/Navbar.php");
     let valID;
     let pr;
     // Carica gli elementi interessati all'interno del modal
-    function idElemento(id, categoria, nome, quantita, descrizone, prenotabile, ruolo) {
+    function idElemento(id, categoria, nome, quantita, prenotabile, ruolo, descrizione) {
         valID = id;
         clearError("modal-header");
         clearError("modal-body");
         clearError("modal-footer");
-        if (ruolo != 1) {
-            //Modal body
-            document.getElementById("info_oggetto").insertAdjacentHTML("beforeend",
-                '<div class="modal-body" style = "text-align: center; color:red;"><h3>Non puoi prenotare</h3></div>');
-        } else {
-            // Prendo tutti gli elementi con id = prenotazione
-            valore = document.querySelectorAll('#prenotazione');
-            // Ciclo sugli elementi per trovare l'elemento che è stato premuto
-            valore.forEach(function(val) {
-                if (parseInt(val.value) == valID) {
+        // Prendo tutti gli elementi con id = prenotazione
+        valore = document.querySelectorAll('#prenotazione');
+        // Ciclo sugli elementi per trovare l'elemento che è stato premuto
+        valore.forEach(function(val) {
+            if (parseInt(val.value) == valID) {
 
-                    //Modal header
-                    document.getElementById("info_oggetto").insertAdjacentHTML("beforeend",
-                        '<div class="modal-header"><h1 class="modal-title fs-5" style="color:black;">' + nome + '</h1><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>');
+                //Modal header
+                document.getElementById("info_oggetto").insertAdjacentHTML("beforeend",
+                    '<div class="modal-header"><h1 class="modal-title fs-5" style="color:black;">' + nome + '</h1><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>');
 
-                    if (prenotabile == 1) {
-                        pr = 'Si';
-                    } else {
-                        pr = 'No';
-                    }
+                if (prenotabile == 1) {
+                    pr = 'Si';
+                } else {
+                    pr = 'No';
+                }
+            
+                let mostra
+                if(ruolo == 1){
+                    mostra = '<input type = "number" style = "width:18%;" value="1" min="1" max="' + quantita + '" name = "quant">'
+                }else{
+                    mostra = '<input type = "number" style = "display: none; width:18%;" value="1" min="1" max="' + quantita + '" name = "quant">'                    
+                }
+                //Modal body
+                document.getElementById("info_oggetto").insertAdjacentHTML("beforeend",
+                    '<div class="modal-body"><t name="descrizione">Descrizione: ' + descrizione + '</t><br><t name="quantita">Quantità: ' + quantita + '</t><br><t name="prenotabile">Prenotabile: ' + pr + '</t><br><div id = "prd_right"><input type = "text" name = "identificativo" style = "display:none;" value = "' + id + '">'+mostra+'');
 
-                    //Modal body
-                    document.getElementById("info_oggetto").insertAdjacentHTML("beforeend",
-                        '<div class="modal-body"> <t name="quantita">Quantità: ' + quantita + '</t><br><t name="prenotabile">Prenotabile: ' + pr + '</t><br><div id = "prd_right"><input type = "text" name = "identificativo" style = "display:none;" value = "' + id + '"><input type = "number" style = "width:18%;" value="1" min="1" max="' + quantita + '" name = "quant"></div></div>');
-
+                if (ruolo == 1) {
                     //Modal footer
                     document.getElementById("info_oggetto").insertAdjacentHTML("beforeend",
                         '<div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annula</button><button type="submit" class="btn btn-primary">Aggiungi</button></div>');
                 }
-            });
+                document.getElementById("info_oggetto").insertAdjacentHTML("beforeend", '</div></div>');
+            }
+        });
 
-        }
     }
 
     function clearError(cls) {

@@ -7,17 +7,17 @@ if (!isset($_SESSION['login'])) {
 require("../config/db_config.php");
 
 // Setta l'header della pagina
-$_POST['titolo'] = 'Aggiungi';
+$_POST['titolo'] = 'Azioni';
 $_POST['path'] = '..';
-$_POST['percorso'] = "./Aggiungi.php";
+$_POST['percorso'] = "./Azioni.php";
 include_once("../templates/Header.php");
 include_once("../templates/Navbar.php");
 
 if (isset($_GET["agg"])) {
     if ($_GET["agg"] == 1) {
-        include_once("../templates/Oggetto.php");
+        include_once("../templates/AggOggetto.php");
     } elseif ($_GET["agg"] == 2) {
-        include_once("../templates/Categoria.php");
+        include_once("../templates/AggCategoria.php");
     } else {
         header("location: ../index.php");
     }

@@ -14,7 +14,7 @@ $row = $result->fetch_assoc();
 if (isset($row)) {
     $stmt->close();
     $conn->close();
-    header("location: ../pages/Aggiungi.php?agg=2&error=1");
+    header("location: ../pages/Azioni.php?agg=2&error=1");
 } else {
     $stmt = $conn->prepare("INSERT INTO categorie (categoria) VALUES (?)");
 
@@ -23,5 +23,5 @@ if (isset($row)) {
 
     $stmt->close();
     $conn->close();
-    header("location: ../pages/Aggiungi.php?agg=2&success=1");
+    header("location: ../pages/Azioni.php?agg=2&success=1");
 }

@@ -26,8 +26,12 @@
                         Azioni
                     </a>
                     <ul class="dropdown-menu" style="background-color: lightgray;">
-                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/Aggiungi.php?agg=1" id = "select_idx">Aggiungi Oggetto</a></li>
-                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/Aggiungi.php?agg=2" id = "select_idx">Aggiungi Categoria</a></li>
+                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/Azioni.php?agg=1" id = "select_idx">Aggiungi Oggetto</a></li>
+                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/Azioni.php?agg=2" id = "select_idx">Aggiungi Categoria</a></li>
+                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/Azioni.php?agg=3" id = "select_idx">Modifica Oggetto</a></li>
+                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/Azioni.php?agg=4" id = "select_idx">Modifica Categoria</a></li>
+                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/Azioni.php?agg=5" id = "select_idx">Rimuovi Oggetto</a></li>
+                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/Azioni.php?agg=6" id = "select_idx">Rimuovi Categoria</a></li>
                     </ul>
                 </li>';
                 }
