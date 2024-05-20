@@ -18,7 +18,9 @@ if (isset($_GET["agg"])) {
         include_once("../templates/AggOggetto.php");
     } elseif ($_GET["agg"] == 2) {
         include_once("../templates/AggCategoria.php");
-    } else {
+    } elseif ($_GET["agg"] == 5){
+        include_once("../templates/RimOggetto.php");
+    }else{
         header("location: ../index.php");
     }
 } else {

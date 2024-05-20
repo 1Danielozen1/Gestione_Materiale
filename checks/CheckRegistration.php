@@ -112,8 +112,10 @@ if ($trovato == 1) {
         $_SESSION['cognome'] = $row['cognome'];
         $_SESSION['id'] = $row['id'];
         $_SESSION['ruolo'] = $row['ruolo'];
+        
         $_SESSION["oggetti"] = array();
         $_SESSION["quantita"] = array();
+        $_SESSION["cestino"] = array();
         $stmt->close();
         $conn->close();
         header("Location: ../index.php");

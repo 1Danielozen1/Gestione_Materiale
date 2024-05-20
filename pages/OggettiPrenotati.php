@@ -51,7 +51,7 @@ if (count($rows) > 0) {
 // Se uno di questi valori è settato scrive che non sono presenti elementi prenotati
 if ((isset($cont) && (!isset($presente))) || isset($no_row)) {
     echo '<div class="center-div">
-            <img src="../img/empty-bag.svg" alt="Carrello vuoto"><br><br>
+            <img src="../icons/empty-bag.svg" alt="Carrello vuoto"><br><br>
                 <h5>NESSUN OGGETTO PRENOTATO</h5>
             </div>';
 }

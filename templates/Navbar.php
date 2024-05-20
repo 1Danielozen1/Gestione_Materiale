@@ -57,9 +57,9 @@
             <!-- Fine Navbar links -->
             <?php
             // Creo il carrello, il pulsante log out e mostro il nome utente
-            $img = '/img/cart.svg';
+            $img = '/icons/cart.svg';
             if (count($_SESSION['oggetti']) > 0) {
-                $img = '/img/cart-fill.svg';
+                $img = '/icons/cart-fill.svg';
             }
             echo '<div class = "col" id = "prd_right">';
             if ($_SESSION['ruolo'] == 1) {

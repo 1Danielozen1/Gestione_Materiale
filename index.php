@@ -31,7 +31,7 @@ include_once("./templates/Navbar.php");
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
-            if ($row["prenotabile"] != 0) {
+            if ($row["prenotabile"] != 0 || $_SESSION['ruolo'] != 1) {
                 $descrizione = '"' . $row["descrizione"] . '"';
                 if($_SESSION["ruolo"] != 1){
                     $bottone = "Dettagli";

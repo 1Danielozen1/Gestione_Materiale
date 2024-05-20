@@ -34,5 +34,6 @@ if (!isset($row['email']) || !isset($row['password'])) {
 
     $_SESSION["oggetti"] = array();
     $_SESSION["quantita"] = array();
+    $_SESSION["cestino"] = array();
     header("Location: ../index.php");
 }

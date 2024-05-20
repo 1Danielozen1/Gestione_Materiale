@@ -46,6 +46,7 @@ if (isset($row)) {
             }
         }
 
+        // se il nome dell'immagine è uguale ad uno presente nel database returna un errore.
         if (!isset($esiste)) {
             move_uploaded_file($_FILES["immagine"]["tmp_name"], "../img/$nome");
 

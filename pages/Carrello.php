@@ -40,7 +40,7 @@ if (count($_SESSION["oggetti"]) > 0) {
     }
 } else {
     echo '<div class = "center-div">
-        <img src="../img/empty-bag.svg" alt="Carrello vuoto"><br><br>
+        <img src="../icons/empty-bag.svg" alt="Carrello vuoto"><br><br>
             <h5>IL CARRELLO È VUOTO</h5>
         </div>';
 }
