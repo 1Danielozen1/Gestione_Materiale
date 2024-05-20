@@ -34,15 +34,33 @@ if (isset($row)) {
         // prendo il nome dell'immagine e la carico nella cartella img
         $nome = $_FILES["immagine"]["name"];
         $path_img = "/img/$nome";
-        move_uploaded_file($_FILES["immagine"]["tmp_name"], "../img/$nome");
 
-        $stmt = $conn->prepare("INSERT INTO oggetti (categoria, nome, totQuantita , descrizione, prenotabile, immagine) VALUES (?,?,?,?,?,?)");
+        $stmt = $conn->prepare("SELECT immagine 
+                        FROM oggetti");
 
-        $stmt->bind_param("isssis", $_POST["nome_categoria"], $_POST["nome_oggetto"], $_POST["quantita"], $_POST["descrizione"], $prenotabile, $path_img);
         $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            if ($path_img == $row["immagine"]) {
+                $esiste = 1;
+            }
+        }
 
-        $stmt->close();
-        $conn->close();
-        header("location: ../pages/Azioni.php?agg=1&success=1");
+        if (!isset($esiste)) {
+            move_uploaded_file($_FILES["immagine"]["tmp_name"], "../img/$nome");
+
+            $stmt = $conn->prepare("INSERT INTO oggetti (categoria, nome, totQuantita , descrizione, prenotabile, immagine) VALUES (?,?,?,?,?,?)");
+
+            $stmt->bind_param("isssis", $_POST["nome_categoria"], $_POST["nome_oggetto"], $_POST["quantita"], $_POST["descrizione"], $prenotabile, $path_img);
+            $stmt->execute();
+
+            $stmt->close();
+            $conn->close();
+            header("location: ../pages/Azioni.php?agg=1&success=1");
+        } else {
+            $stmt->close();
+            $conn->close();
+            header("location: ../pages/Azioni.php?agg=1&error=4");
+        }
     }
 }

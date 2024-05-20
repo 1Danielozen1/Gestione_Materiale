@@ -73,6 +73,10 @@
                 echo "<div class='p-1 alert alert-danger' role='alert' style ='margin-top: 1%'>
                             Formato immagine non accettato.
                       </div>";
+            } elseif (isset($_GET['error']) && $_GET['error'] == 4) {
+                echo "<div class='p-1 alert alert-danger' role='alert' style ='margin-top: 1%'>
+                    Nome immagine già esistente.
+                    </div>";
             }
             ?>
         </div>
