@@ -18,6 +18,8 @@ if (isset($_GET["agg"])) {
         include_once("../templates/AggOggetto.php");
     } elseif ($_GET["agg"] == 2) {
         include_once("../templates/AggCategoria.php");
+    }elseif ($_GET["agg"] == 3){
+        include_once("../templates/ModOggetto.php");
     } elseif ($_GET["agg"] == 5){
         include_once("../templates/RimOggetto.php");
     }else{
