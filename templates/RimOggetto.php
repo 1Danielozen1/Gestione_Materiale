@@ -2,6 +2,7 @@
     <table class="table table-borderless table-striped" style="margin-bottom: 0%;" id="tabella">
         <?php
 
+        // prendo tutti gli oggetti presenti nel database
         $stmt = $conn->prepare("SELECT oggetti.id, oggetti.nome AS 'Nome', categorie.categoria AS 'Categoria'
                                 FROM oggetti, categorie
                                 WHERE oggetti.categoria = categorie.id");
@@ -30,8 +31,9 @@
             echo '<tr>';
             // carico i dati nella tabella
             foreach ($fields as $field) {
-                caricaDati($field, $row);
+                echo '<td>' . $$row[$field->name] . '</td>';
             }
+            // cambio l'icona del commento
             if (isset($_GET['vals']) && in_array($row['id'], $_GET['vals'])) {
                 echo '<td><a class = "link-underline link-underline-opacity-0" href="../checks/Cestino.php?id=' . $row['id'] . '&rimuovi=1" style = "margin-right: 2%">
                         <button type="button" class="btn">
@@ -48,29 +50,22 @@
             echo '</tr>';
         }
         echo '</tbody>';
-
-        // Aggiunge l'html della tabella
-        function caricaDati($field, $row)
-        {
-            $riferimento = $row[$field->name];
-            echo '<td>' . $riferimento . '</td>';
-        }
         ?>
     </table>
 </div>
 
 <?php
-    if (isset($_GET['vals'])){
-        $s = '';
-        foreach ($_GET['vals'] as $val) {
-            $s = $s . "&vals[]=" . $val;
-        }
+// se vals è settata, mostro il bottne di conferma
+if (isset($_GET['vals'])) {
+    $s = '';
+    foreach ($_GET['vals'] as $val) {
+        $s = $s . "&vals[]=" . $val;
+    }
 
-        echo'<div id="buttonContainer" style = "margin-top: 2%;">
-            <a href="../checks/Cestino.php?conf=1'.$s.'">
+    echo '<div id="buttonContainer" style = "margin-top: 2%;">
+            <a href="../checks/Cestino.php?conf=1' . $s . '">
             <button type="submit" class="btn btn-danger fs-5">Conferma ed elimina</button>
             </a>
             </div>';
-
-    }
+}
 ?>

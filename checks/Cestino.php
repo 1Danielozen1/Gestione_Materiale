@@ -4,7 +4,8 @@ session_start();
 if (isset($_GET['conf'])) {
     require("../config/db_config.php");
 
-    foreach($_GET['vals'] as $val){
+    // se conf è settato procede ad eliminare l'oggetto
+    foreach ($_GET['vals'] as $val) {
 
         $stmt = $conn->prepare("DELETE FROM noleggio_materiali 
                                 WHERE idOggetto = ?");
@@ -18,7 +19,7 @@ if (isset($_GET['conf'])) {
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
-        unlink('..'.$row['immagine']);
+        unlink('..' . $row['immagine']);
 
         $stmt = $conn->prepare("DELETE FROM oggetti 
                                 WHERE id = ?");
@@ -28,7 +29,7 @@ if (isset($_GET['conf'])) {
     $stmt->close();
     $conn->close();
 } else {
-
+    // rimuove l'oggetto dal cestino
     if (isset($_GET['rimuovi'])) {
         $count = 0;
         $cestino = array();
@@ -45,6 +46,7 @@ if (isset($_GET['conf'])) {
         $_SESSION["cestino"] = array();
         $_SESSION["cestino"] = $cestino;
     } else {
+        // inserisce l'oggetto nel cestino
         array_push($_SESSION['cestino'], $_GET['id']);
     }
 }
