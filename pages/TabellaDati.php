@@ -14,9 +14,9 @@ include_once("../templates/Header.php");
 include_once("../templates/Navbar.php");
 ?>
 
-<!-- TABELLA  -->
-<div id="lrd" style="margin-top: 2%; border: 1px solid black; border-radius: 20px;">
-    <table class="table table-borderless table-striped" style="margin-bottom: 0%;" id="tabella">
+<!-- TABELLA -->
+<div id="lrd" class="table-responsive" style="margin-top: 2%; border: 1px solid black; border-radius: 20px;">
+    <table class="table table-striped" style="margin-bottom: 0%;" id="tabella">
         <?php
         if (isset($_GET['resetta'])) {
             unset($_SESSION['tabella']);
@@ -87,11 +87,11 @@ include_once("../templates/Navbar.php");
             } else {
                 $riferimento = $row[$field->name];
             }
-            echo '<td>' . $riferimento . '</td>';
+            echo '<td scope="row">' . $riferimento . '</td>';
         }
         ?>
     </table>
-</div>
+    </div>
 <!-- FINE TABELLA -->
 
 <!-- Resetto la tabella richiamando la stessa pagina visto che ho eliminato la variabile 'tabella' precedentemente -->
