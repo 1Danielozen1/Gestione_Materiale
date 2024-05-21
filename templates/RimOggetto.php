@@ -1,4 +1,4 @@
-<div id="lrd" style="margin-top: 2%; border: 1px solid black; border-radius: 20px;">
+<div id="lrd" class="table-responsive" style="margin-top: 2%; border: 1px solid black; border-radius: 20px;">
     <table class="table table-borderless table-striped" style="margin-bottom: 0%;" id="tabella">
         <?php
 
@@ -31,7 +31,7 @@
             echo '<tr>';
             // carico i dati nella tabella
             foreach ($fields as $field) {
-                echo '<td>' . $$row[$field->name] . '</td>';
+                echo '<td>' . $row[$field->name] . '</td>';
             }
             // cambio l'icona del commento
             if (isset($_GET['vals']) && in_array($row['id'], $_GET['vals'])) {

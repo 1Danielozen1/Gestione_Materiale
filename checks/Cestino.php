@@ -26,8 +26,14 @@ if (isset($_GET['conf'])) {
         $stmt->bind_param("i", $val);
         $stmt->execute();
     }
+    $count = 0;
+    $cestino = array();
+
+    $_SESSION["cestino"] = array();
+
     $stmt->close();
     $conn->close();
+    header('location: ../pages/Azioni.php?agg=5');
 } else {
     // rimuove l'oggetto dal cestino
     if (isset($_GET['rimuovi'])) {
@@ -49,11 +55,11 @@ if (isset($_GET['conf'])) {
         // inserisce l'oggetto nel cestino
         array_push($_SESSION['cestino'], $_GET['id']);
     }
-}
 
-$s = '';
-foreach ($_SESSION['cestino'] as $ces) {
-    $s = $s . "&vals[]=" . $ces;
-}
+    $s = '';
+    foreach ($_SESSION['cestino'] as $ces) {
+        $s = $s . "&vals[]=" . $ces;
+    }
 
-header('location: ../pages/Azioni.php?agg=5' . $s . '');
+    header('location: ../pages/Azioni.php?agg=5' . $s . '');
+}
