@@ -60,7 +60,7 @@
             $img = '/icons/cart.svg';
             if (count($_SESSION['oggetti']) > 0) {
                 $img = '/icons/cart-fill.svg';
-            }else{
+            } else {
                 $img = '/icons/cart.svg';
             }
             echo '<div class = "col" id = "prd_right">';
