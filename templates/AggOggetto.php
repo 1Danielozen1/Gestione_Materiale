@@ -1,6 +1,6 @@
 <div id="form" class=" justify-content-center align-items-center">
 
-    <h2 style="color: black; text-align:center; margin-bottom:5%; margin-top: 2%; font-weight: bolder;">AGGIUNGI OGGETTO</h2>
+    <h2 style="color: black; text-align:center; margin-bottom:5%; margin-top: 4vh; font-weight: bolder;">AGGIUNGI OGGETTO</h2>
 
     <form id="formdiv" enctype="multipart/form-data" class="row shadow needs-validation rounded" action="../checks/AggiungiOggetto.php" method="POST">
         <?php

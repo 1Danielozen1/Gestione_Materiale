@@ -31,8 +31,8 @@
                         <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/Azioni.php?agg=3" id = "select_idx">Modifica Oggetto</a></li>
                         <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/Azioni.php?agg=4" id = "select_idx">Modifica Categoria</a></li>
                         <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/Azioni.php?agg=5" id = "select_idx">Rimuovi Oggetto</a></li>
-                        <li><a class="dropdown-item" href="' . $_POST['path'] . '/pages/Azioni.php?agg=6" id = "select_idx">Rimuovi Categoria</a></li>
-                    </ul>
+
+                        </ul>
                 </li>';
                 }
                 ?>
@@ -60,6 +60,8 @@
             $img = '/icons/cart.svg';
             if (count($_SESSION['oggetti']) > 0) {
                 $img = '/icons/cart-fill.svg';
+            }else{
+                $img = '/icons/cart.svg';
             }
             echo '<div class = "col" id = "prd_right">';
             if ($_SESSION['ruolo'] == 1) {

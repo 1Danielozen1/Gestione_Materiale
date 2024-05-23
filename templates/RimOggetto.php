@@ -1,4 +1,5 @@
-<div id="lrd" class="table-responsive" style="margin-top: 2%; border: 1px solid black; border-radius: 20px;">
+<h2 style="color: black; text-align:center; margin-bottom:4vh; margin-top: 10vh; font-weight: bolder;">RIMUOVI OGGETTO</h2>
+<div id="lrd" class="table-responsive" style="border: 1px solid black; border-radius: 20px;">
     <table class="table table-borderless table-striped" style="margin-bottom: 0%;" id="tabella">
         <?php
 

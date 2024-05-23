@@ -14,33 +14,35 @@ foreach ($_SESSION["oggetti"] as $ogg) {
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
+    if ($row["prenotabile"] != 0) {
 
-    // controllo se la quantità presente nel database è inferiore o uguale a quella prenotata
-    if ($row["totQuantita"] <= $_SESSION["quantita"][$count]) {
-        $n_prenotati = $row["totQuantita"];
-        $n_quant = 0;
-        $prenot = 0;
-    } else {
-        $n_prenotati = $_SESSION["quantita"][$count];
-        $n_quant =  $row["totQuantita"] - $n_prenotati;
-
-        if ($n_quant <= 0) {
+        // controllo se la quantità presente nel database è inferiore o uguale a quella prenotata
+        if ($row["totQuantita"] <= $_SESSION["quantita"][$count]) {
+            $n_prenotati = $row["totQuantita"];
+            $n_quant = 0;
             $prenot = 0;
-        }
-    }
+        } else {
+            $n_prenotati = $_SESSION["quantita"][$count];
+            $n_quant =  $row["totQuantita"] - $n_prenotati;
 
-    $stmt = $conn->prepare("UPDATE oggetti
+            if ($n_quant <= 0) {
+                $prenot = 0;
+            }
+        }
+
+        $stmt = $conn->prepare("UPDATE oggetti
                                 SET oggetti.totQuantita = ?,
                                     oggetti.prenotabile = ?
                                 WHERE oggetti.id = ?");
-    $stmt->bind_param("iii", $n_quant, $prenot, $ogg);
-    $stmt->execute();
+        $stmt->bind_param("iii", $n_quant, $prenot, $ogg);
+        $stmt->execute();
 
-    // Inserisco nella tabella "noleggio_materiali" le informazioni dell'oggetto prenotato
-    $stmt = $conn->prepare("INSERT INTO noleggio_materiali (idOggetto, idUtente, quantita) VALUES (?,?,?);");
-    $stmt->bind_param("iii", $ogg, $_SESSION["id"], $n_prenotati);
-    $stmt->execute();
-    $count++;
+        // Inserisco nella tabella "noleggio_materiali" le informazioni dell'oggetto prenotato
+        $stmt = $conn->prepare("INSERT INTO noleggio_materiali (idOggetto, idUtente, quantita) VALUES (?,?,?);");
+        $stmt->bind_param("iii", $ogg, $_SESSION["id"], $n_prenotati);
+        $stmt->execute();
+        $count++;
+    }
 }
 
 $stmt->close();

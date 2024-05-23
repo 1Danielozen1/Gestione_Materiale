@@ -24,7 +24,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 $rows = $result->fetch_all(MYSQLI_ASSOC);
 
-echo '<h2 class="card-header"style = "font-weight: bolder; text-align: center; margin-top: 2%;">OGGETTI PRENOTATI</h2>';
+echo '<h2 class="card-header"style = "font-weight: bolder; text-align: center; margin-top: 4vh;">OGGETTI PRENOTATI</h2>';
 
 // Controllo se l'utente ha degli oggetti prenotati
 // Controllo se gli elementi prenotati non sono già stati restituiti
@@ -81,5 +81,7 @@ function elementiPrenotatiCard($row)
   </div>';
 }
 ?>
-
+<?php
+include_once("../templates/Footer.php");
+?>
 <script src="../bootstrap/bootstrap-5.3.3//dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

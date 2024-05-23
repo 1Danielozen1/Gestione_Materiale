@@ -15,9 +15,10 @@ include_once("../templates/Navbar.php");
 ?>
 
 
-<h2 class="card-header" style="font-weight: bolder; text-align: center; margin-top: 2%;">OGGETTI NEL CARRELLO</h2>
+<h2 class="card-header" style="font-weight: bolder; text-align: center; margin-top: 4vh;">OGGETTI NEL CARRELLO</h2>
 <?php
 $count = 0;
+$esiste = 0;
 // cilo sugli oggetti inseriti nel carrello
 if (count($_SESSION["oggetti"]) > 0) {
     foreach ($_SESSION["oggetti"] as $ogg) {
@@ -26,14 +27,17 @@ if (count($_SESSION["oggetti"]) > 0) {
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
-        if (isset($_GET["id_cat"])) {
-            // Se viene selezionata una categoria mostra solo gli elementi presenti in quella categoria
-            if ($row["categoria"] == $_GET["id_cat"]) {
+        if (isset($row)) {
+            if (isset($_GET["id_cat"])) {
+                // Se viene selezionata una categoria mostra solo gli elementi presenti in quella categoria
+                if ($row["categoria"] == $_GET["id_cat"]) {
+                    elementiCarrelloCard($row, $count);
+                }
+            } else {
+                // mostra gli elementi nel carrello
                 elementiCarrelloCard($row, $count);
             }
-        } else {
-            // mostra gli elementi nel carrello
-            elementiCarrelloCard($row, $count);
+            $esiste = 1;
         }
 
         $count++;
@@ -72,13 +76,24 @@ function elementiCarrelloCard($row, $count)
 
 <?php
 // Pulsante di conferma della prenotazione
-if (count($_SESSION["oggetti"]) > 0) {
+if (count($_SESSION["oggetti"]) > 0 && $esiste != 0) {
     echo '<div id = "prd" style = "margin-bottom: 3%">
             <a href= "../checks/PrenotaOggetti.php">
             <button type="submit" id = "prenota" class="btn btn-success" data-bs-toggle="modal">Conferma e prenota</button>
             </a>
             </div>';
+} else {
+    echo '<div class = "center-div">
+    <img src="../icons/empty-bag.svg" alt="Carrello vuoto"><br><br>
+        <h5>IL CARRELLO È VUOTO</h5>
+    </div>';
+    if (isset($_SESSION["oggetti"])) {
+        unset($_SESSION["oggetti"]);
+        $_SESSION["oggetti"] = array();
+    }
 }
 ?>
-
+<?php
+include_once("../templates/Footer.php");
+?>
 <script src="../bootstrap/bootstrap-5.3.3//dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

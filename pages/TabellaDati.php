@@ -15,6 +15,7 @@ include_once("../templates/Navbar.php");
 ?>
 
 <!-- TABELLA -->
+<h2 style="color: black; text-align:center; margin-bottom:4vh; margin-top: 5vh; font-weight: bolder;">OGGETTI NOLEGGIATI</h2>
 <div id="lrd" class="table-responsive" style="margin-top: 2%; border: 1px solid black; border-radius: 20px;">
     <table class="table table-striped" style="margin-bottom: 0%;" id="tabella">
         <?php
@@ -91,12 +92,14 @@ include_once("../templates/Navbar.php");
         }
         ?>
     </table>
-    </div>
+</div>
 <!-- FINE TABELLA -->
 
 <!-- Resetto la tabella richiamando la stessa pagina visto che ho eliminato la variabile 'tabella' precedentemente -->
 <div id="lrd" style="margin-top: 2%;">
     <a class="btn btn-secondary" href="./TabellaDati.php?resetta=1" role="button">Ripristina</a>
 </div>
-
+<?php
+include_once("../templates/Footer.php");
+?>
 <script src="../bootstrap/bootstrap-5.3.3//dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

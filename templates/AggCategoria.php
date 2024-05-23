@@ -1,6 +1,6 @@
-<div id="form" class=" justify-content-center align-items-center">
+<div id="form" class=" justify-content-center align-items-center" style = "margin-top: 5vh">
 
-    <h2 style="color: black; text-align:center; margin-bottom:5%; margin-top: 2%; font-weight: bolder;">AGGIUNGI CATEGORIA</h2>
+    <h2 style="color: black; text-align:center; margin-bottom:5vh; margin-top: 2%; font-weight: bolder;">AGGIUNGI CATEGORIA</h2>
 
     <form id="formdiv" enctype="multipart/form-data" class="row shadow needs-validation rounded" action="../checks/AggiungiCategoria.php" method="POST">
 

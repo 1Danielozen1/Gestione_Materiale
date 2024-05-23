@@ -1,5 +1,6 @@
 body {
     background-color: rgb(241, 241, 241);
+    height: min-content;
 }
 
 .nav-link,
@@ -7,6 +8,7 @@ body {
 h1 {
     color: white;
 }
+
 
 .navbar {
     background-color: #000005bd;
@@ -117,24 +119,28 @@ h1 {
     color: black;
 }
 
-#link_nome{
+#link_nome {
     color: black;
 }
-#link_nome:hover{
+
+#link_nome:hover {
     color: gray;
 }
 
 /* Arrotondo i bordi della tabella*/
-#tabella tr:last-child th:first-child{
+#tabella tr:last-child th:first-child {
     border-radius: 20px 0px 0px 0px;
 }
-#tabella tr:last-child th:last-child{
+
+#tabella tr:last-child th:last-child {
     border-radius: 0px 20px 0px 0px;
 }
-#tabella tr:last-child td:last-child{
+
+#tabella tr:last-child td:last-child {
     border-radius: 0px 0px 20px 0px;
 }
-#tabella tr:last-child td:first-child{
+
+#tabella tr:last-child td:first-child {
     border-radius: 0px 0px 0px 20px;
 }
 
