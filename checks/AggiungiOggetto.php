@@ -31,37 +31,33 @@ if (isset($row)) {
         $conn->close();
         header("location: ../pages/Azioni.php?agg=1&error=2");
     } else {
-        // prendo il nome dell'immagine e la carico nella cartella img
-        $nome = $_FILES["immagine"]["name"];
-        $path_img = "/img/$nome";
-
-        $stmt = $conn->prepare("SELECT immagine 
-                        FROM oggetti");
-
+        $stmt = $conn->prepare("SELECT MAX(id) AS 'idMax'
+                                FROM oggetti");
         $stmt->execute();
         $result = $stmt->get_result();
-        while ($row = $result->fetch_assoc()) {
-            if ($path_img == $row["immagine"]) {
-                $esiste = 1;
-            }
-        }
+        $row = $result->fetch_assoc();
 
-        // se il nome dell'immagine è uguale ad uno presente nel database returna un errore.
-        if (!isset($esiste)) {
-            move_uploaded_file($_FILES["immagine"]["tmp_name"], "../img/$nome");
+        // estensione file
+        $array_est = explode("/", $_FILES["immagine"]["type"]);
+        $est = $array_est[count($array_est)-1];
+        
+        // nome file con estensione
+        $_FILES["immagine"]["name"] = $row['idMax'] + 1;
+        $nome = $_FILES["immagine"]["name"].".".$est;
+        
+        // percorso file
+        $path_img = "/img/$nome";
 
-            $stmt = $conn->prepare("INSERT INTO oggetti (categoria, nome, totQuantita , descrizione, prenotabile, immagine) VALUES (?,?,?,?,?,?)");
+        // Salvo il file nella cartella img
+        move_uploaded_file($_FILES["immagine"]["tmp_name"], "../img/$nome");
 
-            $stmt->bind_param("isssis", $_POST["nome_categoria"], $_POST["nome_oggetto"], $_POST["quantita"], $_POST["descrizione"], $prenotabile, $path_img);
-            $stmt->execute();
+        $stmt = $conn->prepare("INSERT INTO oggetti (categoria, nome, totQuantita , descrizione, prenotabile, immagine) VALUES (?,?,?,?,?,?)");
 
-            $stmt->close();
-            $conn->close();
-            header("location: ../pages/Azioni.php?agg=1&success=1");
-        } else {
-            $stmt->close();
-            $conn->close();
-            header("location: ../pages/Azioni.php?agg=1&error=4");
-        }
+        $stmt->bind_param("isssis", $_POST["nome_categoria"], $_POST["nome_oggetto"], $_POST["quantita"], $_POST["descrizione"], $prenotabile, $path_img);
+        $stmt->execute();
+
+        $stmt->close();
+        $conn->close();
+        header("location: ../pages/Azioni.php?agg=1&success=1");
     }
 }

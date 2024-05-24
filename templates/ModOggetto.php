@@ -57,7 +57,8 @@
                     } elseif ($field->name == 'Prenotabile') {
 
                         echo '<td>
-                    <select class="form-select" name="' . $field->name . '[]">';
+                                <select class="form-select" name="' . $field->name . '[]">';
+
                         if ($row[$field->name] == 1) {
                             echo '<option value="1" selected>Si</option>
                               <option value="0">No</option>';
@@ -76,7 +77,7 @@
                     } elseif ($field->name == 'Quantità') {
 
                         echo '<td><input type="number" class="p-2 form-control" style ="text-align: center; height: 38px; width: 160px;" value="' . $row[$field->name] . '" min="0" name="' . $field->name . '[]" required></td>';
-                        
+
                         // Inserisco tutti gli altri campi con textarea
                     } else {
 
