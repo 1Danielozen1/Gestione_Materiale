@@ -90,6 +90,7 @@ if (count($_SESSION["oggetti"]) > 0 && $esiste != 0) {
     if (isset($_SESSION["oggetti"])) {
         unset($_SESSION["oggetti"]);
         $_SESSION["oggetti"] = array();
+        header("location: ./Carrello.php");
     }
 }
 ?>

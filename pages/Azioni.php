@@ -13,6 +13,7 @@ $_POST['percorso'] = "./Azioni.php";
 include_once("../templates/Header.php");
 include_once("../templates/Navbar.php");
 
+// includo la pagina interessata in base al $_GET che viene passato
 if (isset($_GET["agg"])) {
     if ($_GET["agg"] == 1) {
         include_once("../templates/AggOggetto.php");
@@ -20,6 +21,8 @@ if (isset($_GET["agg"])) {
         include_once("../templates/AggCategoria.php");
     }elseif ($_GET["agg"] == 3){
         include_once("../templates/ModOggetto.php");
+    } elseif ($_GET["agg"] == 4){
+        include_once("../templates/ModCategoria.php");
     } elseif ($_GET["agg"] == 5){
         include_once("../templates/RimOggetto.php");
     }else{
