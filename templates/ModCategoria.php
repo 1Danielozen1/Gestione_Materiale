@@ -28,7 +28,7 @@
                     if ($field->name == 'ID') {
                         echo '<td style="display:none;"><input name = "' . $field->name . '[]" value = ' . $row[$field->name] . '></td>';
                     } else {
-                        echo '<td><input type="text" class="p-2 form-control" style ="text-align: center; height: 38px; width: 160px;" value="' . $row[$field->name] . '" min="0" name="' . $field->name . '[]" required></td>';
+                        echo '<td><input type="text" class="p-2 form-control" style ="text-align: center; height: 38px; width: 190px;" value="' . $row[$field->name] . '" min="0" name="' . $field->name . '[]" required></td>';
                     }
                 }
                 echo '</tr>';

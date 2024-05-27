@@ -1,4 +1,7 @@
 <?php
+// Avvia l'output buffering
+ob_start();
+
 // Avvia la session e se l'attributo login non è assegnato riporta alla pagina di login
 session_start();
 if (!isset($_SESSION['login'])) {

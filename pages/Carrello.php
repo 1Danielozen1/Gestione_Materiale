@@ -1,4 +1,7 @@
 <?php
+// Avvia l'output buffering
+ob_start();
+
 // Avvia la session e se l'attributo login non è assegnato riporta alla pagina di login
 session_start();
 if (!isset($_SESSION['login'])) {
@@ -87,7 +90,7 @@ if (count($_SESSION["oggetti"]) > 0 && $esiste != 0) {
     <img src="../icons/empty-bag.svg" alt="Carrello vuoto"><br><br>
         <h5>IL CARRELLO È VUOTO</h5>
     </div>';
-    if (isset($_SESSION["oggetti"])) {
+    if (isset($_SESSION["oggetti"]) && count($_SESSION["oggetti"]) > 0) {
         unset($_SESSION["oggetti"]);
         $_SESSION["oggetti"] = array();
         header("location: ./Carrello.php");

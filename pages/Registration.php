@@ -1,4 +1,7 @@
 <?php
+// Avvia l'output buffering
+ob_start();
+
 // avvio la session e se l'attributo destroy è assegnato la distrugge e resta nella pagina
 session_start();
 if (isset($_GET["destroy"])) {
