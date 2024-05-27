@@ -23,3 +23,4 @@ $_SESSION["oggetti"] = $oggetti;
 $_SESSION["quantita"] = $quantita;
 
 header("Location: ../pages/Carrello.php");
+?>

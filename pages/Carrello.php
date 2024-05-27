@@ -57,10 +57,10 @@ $conn->close();
 // Funzione che crea la card dell'elemento presente nel carrello
 function elementiCarrelloCard($row, $count)
 {
-    echo '<div class="card mb-3" style="max-width: 540px; background-color: white;" id = "prenotati">
+    echo '<div class="card mb-3" style="max-width: 540px; max-height:24.5rem; background-color: white;" id = "prenotati">
         <div class="row g-0">
         <div class="col-md-4">
-          <img src="' . $_POST['path'] . '/' . $row["immagine"] . '" class="img-fluid rounded-start carrello" alt="' . $row['nome'] . '">
+          <img src="' . $_POST['path'] . '/' . $row["immagine"] . '" class="img-fluid rounded-start carrello" style ="max-height: 13rem;" alt="' . $row['nome'] . '">
         </div>
         <div class="col-md-8">
           <div class="card-body">

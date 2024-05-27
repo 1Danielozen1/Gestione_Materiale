@@ -1,4 +1,4 @@
-<div id="form" class=" justify-content-center align-items-center" style = "margin-top: 5vh">
+<div id="form" class=" justify-content-center align-items-center" style="margin-top: 5vh">
 
     <h2 style="color: black; text-align:center; margin-bottom:5vh; margin-top: 2%; font-weight: bolder;">AGGIUNGI CATEGORIA</h2>
 

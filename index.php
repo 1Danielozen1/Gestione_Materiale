@@ -33,19 +33,19 @@ include_once("./templates/Navbar.php");
         while ($row = $result->fetch_assoc()) {
             if ($row["prenotabile"] != 0 || $_SESSION['ruolo'] != 1) {
                 $descrizione = '"' . $row["descrizione"] . '"';
-                if($_SESSION["ruolo"] != 1){
+                if ($_SESSION["ruolo"] != 1) {
                     $bottone = "Dettagli";
-                }else{
+                } else {
                     $bottone = "Prenota";
                 }
 
                 // La funzione "onclick" permette di richiamare una funzione javascript quando viene premuto un bottone.
                 echo "<div class='col'> 
-                <div class='shadow card mx-auto' style='width: 18rem; padding: 2%; padding-bottom:0%; margin-bottom:3%;'>
+                <div class='shadow card mx-auto' style='width: 18rem; min-height: 21rem; padding: 2%; padding-bottom:0%; margin-bottom:3%;'>
                 <img src='" . $_POST['path'] . "/" . $row["immagine"] . "' class='card-img-top' style = 'max-height: 210px;' alt='" . $row["nome"] . "'>
                 <div class='card-body'>
                 <b class='card-text'>" . $row["nome"] . "</b><br><br>
-                <button type='button' value = '" . $row["id"] . "' onclick = 'idElemento(" . $row["id"] . ", " . $row["categoria"] . "," . '"' . "" . $row["nome"] . "" . '"' . "," . $row["totQuantita"] . "," . $row["prenotabile"] . "," . $_SESSION["ruolo"] . "," . htmlspecialchars($descrizione) . ")' id = 'prenotazione' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#mostaOggetti'>".$bottone."</button>
+                <button type='button' value = '" . $row["id"] . "' onclick = 'idElemento(" . $row["id"] . ", " . $row["categoria"] . "," . '"' . "" . $row["nome"] . "" . '"' . "," . $row["totQuantita"] . "," . $row["prenotabile"] . "," . $_SESSION["ruolo"] . "," . htmlspecialchars($descrizione) . ")' id = 'prenotazione' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#mostaOggetti'>" . $bottone . "</button>
                 </div>
                 </div>
                 </div>";
@@ -92,16 +92,16 @@ include_once("./templates/Navbar.php");
                 } else {
                     pr = 'No';
                 }
-            
+
                 let mostra
-                if(ruolo == 1){
+                if (ruolo == 1) {
                     mostra = '<input type = "number" style = "width:18%;" value="1" min="1" max="' + quantita + '" name = "quant">'
-                }else{
-                    mostra = '<input type = "number" style = "display: none; width:18%;" value="1" min="1" max="' + quantita + '" name = "quant">'                    
+                } else {
+                    mostra = '<input type = "number" style = "display: none; width:18%;" value="1" min="1" max="' + quantita + '" name = "quant">'
                 }
                 //Modal body
                 document.getElementById("info_oggetto").insertAdjacentHTML("beforeend",
-                    '<div class="modal-body"><t name="descrizione">Descrizione: ' + descrizione + '</t><br><t name="quantita">Quantità: ' + quantita + '</t><br><t name="prenotabile">Prenotabile: ' + pr + '</t><br><div id = "prd_right"><input type = "text" name = "identificativo" style = "display:none;" value = "' + id + '">'+mostra+'');
+                    '<div class="modal-body"><t name="descrizione">Descrizione: ' + descrizione + '</t><br><t name="quantita">Quantità: ' + quantita + '</t><br><t name="prenotabile">Prenotabile: ' + pr + '</t><br><div id = "prd_right"><input type = "text" name = "identificativo" style = "display:none;" value = "' + id + '">' + mostra + '');
 
                 if (ruolo == 1) {
                     //Modal footer

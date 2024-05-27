@@ -10,7 +10,7 @@ if (!isset($_SESSION['login'])) {
 require("../config/db_config.php");
 
 // Setta l'header della pagina
-$_POST['titolo'] = 'Dati';
+$_POST['titolo'] = 'Noleggi';
 $_POST['path'] = '..';
 $_POST['percorso'] = "./TabellaDati.php";
 include_once("../templates/Header.php");

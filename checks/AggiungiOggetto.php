@@ -39,12 +39,12 @@ if (isset($row)) {
 
         // estensione file
         $array_est = explode("/", $_FILES["immagine"]["type"]);
-        $est = $array_est[count($array_est)-1];
-        
+        $est = $array_est[count($array_est) - 1];
+
         // nome file con estensione
         $_FILES["immagine"]["name"] = $row['idMax'] + 1;
-        $nome = $_FILES["immagine"]["name"].".".$est;
-        
+        $nome = $_FILES["immagine"]["name"] . "." . $est;
+
         // percorso file
         $path_img = "/img/$nome";
 
@@ -61,3 +61,4 @@ if (isset($row)) {
         header("location: ../pages/Azioni.php?agg=1&success=1");
     }
 }
+?>

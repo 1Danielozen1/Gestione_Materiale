@@ -35,3 +35,4 @@ $conn->close();
 
 
 header("Location: ../pages/OggettiPrenotati.php");
+?>

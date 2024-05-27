@@ -25,3 +25,4 @@ if (isset($row)) {
     $conn->close();
     header("location: ../pages/Azioni.php?agg=2&success=1");
 }
+?>

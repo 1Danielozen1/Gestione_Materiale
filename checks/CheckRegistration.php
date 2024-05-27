@@ -112,7 +112,7 @@ if ($trovato == 1) {
         $_SESSION['cognome'] = $row['cognome'];
         $_SESSION['id'] = $row['id'];
         $_SESSION['ruolo'] = $row['ruolo'];
-        
+
         $_SESSION["oggetti"] = array();
         $_SESSION["quantita"] = array();
         $_SESSION["cestino"] = array();
@@ -125,3 +125,4 @@ if ($trovato == 1) {
         header("Location: ../pages/Registration.php?notequal=1");
     }
 }
+?>

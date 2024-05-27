@@ -53,3 +53,4 @@ $stmt->close();
 $conn->close();
 
 header('location: ../pages/TabellaDati.php' . $string . '');
+?>

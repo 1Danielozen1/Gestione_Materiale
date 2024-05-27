@@ -31,3 +31,4 @@ $stmt->close();
 $conn->close();
 
 header("location: ../pages/Azioni.php?agg=3");
+?>

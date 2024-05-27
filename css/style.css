@@ -165,6 +165,7 @@ h1 {
     }
 
     .carrello{
+        max-height: 40px;
         margin-top: 5%; 
         margin-left: auto;
     }

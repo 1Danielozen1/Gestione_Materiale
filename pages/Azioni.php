@@ -22,13 +22,13 @@ if (isset($_GET["agg"])) {
         include_once("../templates/AggOggetto.php");
     } elseif ($_GET["agg"] == 2) {
         include_once("../templates/AggCategoria.php");
-    }elseif ($_GET["agg"] == 3){
+    } elseif ($_GET["agg"] == 3) {
         include_once("../templates/ModOggetto.php");
-    } elseif ($_GET["agg"] == 4){
+    } elseif ($_GET["agg"] == 4) {
         include_once("../templates/ModCategoria.php");
-    } elseif ($_GET["agg"] == 5){
+    } elseif ($_GET["agg"] == 5) {
         include_once("../templates/RimOggetto.php");
-    }else{
+    } else {
         header("location: ../index.php");
     }
 } else {

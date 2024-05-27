@@ -63,3 +63,4 @@ if (isset($_GET['conf'])) {
 
     header('location: ../pages/Azioni.php?agg=5' . $s . '');
 }
+?>

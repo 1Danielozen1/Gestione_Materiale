@@ -37,3 +37,4 @@ if (!isset($row['email']) || !isset($row['password'])) {
     $_SESSION["cestino"] = array();
     header("Location: ../index.php");
 }
+?>

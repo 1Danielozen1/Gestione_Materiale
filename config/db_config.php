@@ -17,3 +17,4 @@ function criptpsw($psw)
     $pswcript = crypt($psw, $salt);
     return $pswcript;
 }
+?>

@@ -51,3 +51,4 @@ $conn->close();
 $_SESSION["oggetti"] = array();
 $_SESSION["quantita"] = array();
 header("Location: ../pages/OggettiPrenotati.php");
+?>
