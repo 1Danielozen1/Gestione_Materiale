@@ -127,6 +127,13 @@ h1 {
     color: gray;
 }
 
+.carrello{
+    max-width: 165px; 
+    margin-top: 10%; 
+    margin-left: 3vh;
+}
+
+
 /* Arrotondo i bordi della tabella*/
 #tabella tr:last-child th:first-child {
     border-radius: 20px 0px 0px 0px;
@@ -155,6 +162,11 @@ h1 {
     #form2 {
         width: 100%;
         height: fit-content;
+    }
+
+    .carrello{
+        margin-top: 5%; 
+        margin-left: auto;
     }
 }
 
