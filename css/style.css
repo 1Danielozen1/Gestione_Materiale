@@ -3,6 +3,14 @@ body {
     height: min-content;
 }
 
+#titlo{
+    margin-bottom: 5%;
+    color: black;
+    text-align: center;
+    margin-top:4vh; 
+    font-size: 400%;
+}
+
 .nav-link,
 .navbar-brand,
 h1 {
@@ -178,5 +186,9 @@ h1 {
 
     #prenotati {
         width: 100%;
+    }
+
+    #titolo{
+        margin-top: 10vh;
     }
 }

@@ -20,7 +20,7 @@ $_POST['titolo'] = 'Login Page';
 $_POST['path'] = '..';
 include_once("../templates/Header.php");
 ?>
-
+<h1 id="titlo">RESTITUITIS</h1>
 <form id="form2" class="shadow needs-validation rounded position-absolute top-50 start-50 translate-middle" action="../checks/CheckLogin.php" method="POST">
 
     <h1 id="loginTitle" style="margin-bottom:10%;">Login</h1>

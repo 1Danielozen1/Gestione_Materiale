@@ -14,10 +14,8 @@ include_once("./templates/Navbar.php");
 ?>
 
 
-<h2 style="color: black; text-align:center; margin-bottom:2%; margin-top: 2%; font-weight: bolder;">OGGETTI ESPOSTI</h2>
-
 <!-- Cards -->
-<div class="container text-center">
+<div class="container text-center" style ="margin-top: 10vh;">
     <div class="row" id="cardDIV">
         <?php
         // Prendo gli oggetti dal database e li inserisco in delle cards
@@ -41,11 +39,14 @@ include_once("./templates/Navbar.php");
 
                 // La funzione "onclick" permette di richiamare una funzione javascript quando viene premuto un bottone.
                 echo "<div class='col'> 
-                <div class='shadow card mx-auto' style='width: 18rem; min-height: 21rem; padding: 2%; padding-bottom:0%; margin-bottom:3%;'>
+                <div class='shadow card mx-auto' style='width: 18rem; min-height: 25rem; padding: 2%; padding-bottom:0%; margin-bottom:3%;'>
                 <img src='" . $_POST['path'] . "/" . $row["immagine"] . "' class='card-img-top' style = 'max-height: 210px;' alt='" . $row["nome"] . "'>
                 <div class='card-body'>
                 <b class='card-text'>" . $row["nome"] . "</b><br><br>
-                <button type='button' value = '" . $row["id"] . "' onclick = 'idElemento(" . $row["id"] . ", " . $row["categoria"] . "," . '"' . "" . $row["nome"] . "" . '"' . "," . $row["totQuantita"] . "," . $row["prenotabile"] . "," . $_SESSION["ruolo"] . "," . htmlspecialchars($descrizione) . ")' id = 'prenotazione' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#mostaOggetti'>" . $bottone . "</button>
+                <button type='button' value = '" . $row["id"] . "' onclick = 'idElemento(" . $row["id"] . ", " . $row["categoria"] . "," . '"' . "" . $row["nome"] . "" . '"' . "," . $row["totQuantita"] . "," . $row["prenotabile"] . "," . $_SESSION["ruolo"] . "," . htmlspecialchars($descrizione) . ")' id = 'prenotazione' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#mostaOggetti' style='max-width:100px; min-width:90px'>" . $bottone . "</button><br><br>
+                
+                <button type='button' class='btn btn-warning' style='max-width:100px; min-width:90px'>Modifica</button>
+                <button type='button' class='btn btn-danger' style='max-width:100px; min-width:90px'>Elimina</button>
                 </div>
                 </div>
                 </div>";
