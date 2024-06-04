@@ -55,9 +55,7 @@ include_once("./templates/Navbar.php");
                     <a href='./pages/Azioni.php?agg=3&ogg_sing=" . $row["id"] . "' class='link-underline link-underline-opacity-0'>
                         <button type='button' class='btn btn-warning' style='max-width:100px; min-width:90px'>Modifica</button>
                     </a>
-                    <a href='./pages/Azioni.php?agg=1' class='link-underline link-underline-opacity-0'>
-                        <button type='button' class='btn btn-danger' style='max-width:100px; min-width:90px'>Elimina</button>
-                    </a>";
+                    <button type='button' class='btn btn-danger' onclick = 'oggettoDaEliminare(" . $row["id"] . "," . '"' . "" . $row["nome"] . "" . '"' . ")' data-bs-toggle='modal' data-bs-target='#eliminaOggetto' style='max-width:100px; min-width:90px'>Elimina</button>";
                 }
                 echo "</div>
                 </div>
@@ -80,7 +78,47 @@ include_once("./templates/Navbar.php");
 </div>
 <!-- Fine Cards -->
 
-<!-- Modal -->
+<!-- Modal Elimina oggetto-->
+<?php
+ if ($_SESSION['ruolo'] != 1) {
+    echo' <div class="modal fade" id="eliminaOggetto" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" id="avviso">
+                </div>
+            </div>
+        </div>';
+ }
+?>
+
+<script>
+    let valID2
+    let elemento
+    function oggettoDaEliminare(id, nome) {
+        valID2 = id;
+        clearError("modal-header");
+        clearError("modal-body");
+        clearError("modal-footer");
+        // Prendo tutti gli elementi con id = prenotazione
+        elemento = document.querySelectorAll('#prenotazione');
+        elemento.forEach(function(val) {
+            if (parseInt(val.value) == valID2) {
+                //Modal header
+                document.getElementById("avviso").insertAdjacentHTML("beforeend",
+                    '<div class="modal-header" style = "background-color: orange"><h1 class="modal-title fs-5" style="color:withe;">ATTENZIONE</h1><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>');
+               
+                //Modal body
+                document.getElementById("avviso").insertAdjacentHTML("beforeend",
+                    "<div class='modal-body'><t>L'eliminazione dell'oggetto</t> <t style = 'color: green'>"+nome+"</t> <t>sarà irreversibile.</t></div>");
+                
+                //Modal footer
+                document.getElementById("avviso").insertAdjacentHTML("beforeend",
+                    '<div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annula</button> <a href="./checks/Cestino.php?conf=1&vals[]='+id+'" class="link-underline link-underline-opacity-0"><button type="submit" class="btn btn-danger">Elimina</button></a></div>');
+            }
+        });
+    }
+</script>
+
+<!-- Modal Aggiunta oggetto-->
 <div class="modal fade" id="mostaOggetti" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
