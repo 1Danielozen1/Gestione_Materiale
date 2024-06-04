@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 20vh;">
+<div class="container">
   <footer class="py-5 my-5">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
       <?php

@@ -30,5 +30,8 @@ foreach ($_POST['ID'] as $id) {
 $stmt->close();
 $conn->close();
 
-header("location: ../pages/Azioni.php?agg=3");
-?>
+if (count($_POST['ID']) == 1) {
+    header("location: ../pages/Azioni.php?agg=3&ogg_sing=" . $_POST['ID'][0] . "");
+} else {
+    header("location: ../pages/Azioni.php?agg=3");
+}

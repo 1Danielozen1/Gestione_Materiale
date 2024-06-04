@@ -58,7 +58,6 @@ if (isset($row)) {
 
         $stmt->close();
         $conn->close();
-        header("location: ../pages/Azioni.php?agg=1&success=1");
+        header("location: ../index.php");
     }
 }
-?>

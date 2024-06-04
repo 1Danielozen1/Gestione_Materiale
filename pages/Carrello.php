@@ -50,6 +50,7 @@ if (count($_SESSION["oggetti"]) > 0) {
         <img src="../icons/empty-bag.svg" alt="Carrello vuoto"><br><br>
             <h5>IL CARRELLO È VUOTO</h5>
         </div>';
+    $scritto = 1;
 }
 $stmt->close();
 $conn->close();
@@ -86,10 +87,12 @@ if (count($_SESSION["oggetti"]) > 0 && $esiste != 0) {
             </a>
             </div>';
 } else {
-    echo '<div class = "center-div">
+    if (!isset($scritto)) {
+        echo '<div class = "center-div">
     <img src="../icons/empty-bag.svg" alt="Carrello vuoto"><br><br>
         <h5>IL CARRELLO È VUOTO</h5>
     </div>';
+    }
     if (isset($_SESSION["oggetti"]) && count($_SESSION["oggetti"]) > 0) {
         unset($_SESSION["oggetti"]);
         $_SESSION["oggetti"] = array();

@@ -3,12 +3,19 @@
     <div id="lrd" class="table-responsive" style=" border: 1px solid black; border-radius: 20px;">
         <table class="table table-borderless" style="margin-bottom: 0%;" id="tabella">
             <?php
-
-            // prendo tutti gli oggetti presenti nel database
-            $stmt = $conn->prepare("SELECT oggetti.id AS 'ID', oggetti.nome AS 'Nome', categorie.categoria AS 'Categoria', oggetti.totQuantita AS 'Quantità', oggetti.descrizione AS 'Descrizione', oggetti.prenotabile AS 'Prenotabile'
+            if (isset($_GET['ogg_sing'])) {
+                $stmt = $conn->prepare("SELECT oggetti.id AS 'ID', oggetti.nome AS 'Nome', categorie.categoria AS 'Categoria', oggetti.totQuantita AS 'Quantità', oggetti.descrizione AS 'Descrizione', oggetti.prenotabile AS 'Prenotabile'
+                                        FROM oggetti, categorie
+                                        WHERE oggetti.categoria = categorie.id
+                                            AND oggetti.id = ?");
+                $stmt->bind_param('i', $_GET['ogg_sing']);
+            } else {
+                // prendo tutti gli oggetti presenti nel database
+                $stmt = $conn->prepare("SELECT oggetti.id AS 'ID', oggetti.nome AS 'Nome', categorie.categoria AS 'Categoria', oggetti.totQuantita AS 'Quantità', oggetti.descrizione AS 'Descrizione', oggetti.prenotabile AS 'Prenotabile'
                                 FROM oggetti, categorie
                                 WHERE oggetti.categoria = categorie.id
                                 ORDER BY oggetti.id");
+            }
             $stmt->execute();
             $result = $stmt->get_result();
             $fields = $result->fetch_fields(); // ottengo i nomi delle colonne

@@ -15,7 +15,7 @@ include_once("./templates/Navbar.php");
 
 
 <!-- Cards -->
-<div class="container text-center" style ="margin-top: 10vh;">
+<div class="container text-center" style="margin-top: 10vh;">
     <div class="row" id="cardDIV">
         <?php
         // Prendo gli oggetti dal database e li inserisco in delle cards
@@ -37,23 +37,44 @@ include_once("./templates/Navbar.php");
                     $bottone = "Prenota";
                 }
 
+                if ($_SESSION['ruolo'] != 1) {
+                    $rem = 25;
+                } else {
+                    $rem = 21;
+                }
+
                 // La funzione "onclick" permette di richiamare una funzione javascript quando viene premuto un bottone.
                 echo "<div class='col'> 
-                <div class='shadow card mx-auto' style='width: 18rem; min-height: 25rem; padding: 2%; padding-bottom:0%; margin-bottom:3%;'>
+                <div class='shadow card mx-auto' style='width: 18rem; min-height: " . $rem . "rem; padding: 2%; padding-bottom:0%; margin-bottom:3%;'>
                 <img src='" . $_POST['path'] . "/" . $row["immagine"] . "' class='card-img-top' style = 'max-height: 210px;' alt='" . $row["nome"] . "'>
                 <div class='card-body'>
                 <b class='card-text'>" . $row["nome"] . "</b><br><br>
-                <button type='button' value = '" . $row["id"] . "' onclick = 'idElemento(" . $row["id"] . ", " . $row["categoria"] . "," . '"' . "" . $row["nome"] . "" . '"' . "," . $row["totQuantita"] . "," . $row["prenotabile"] . "," . $_SESSION["ruolo"] . "," . htmlspecialchars($descrizione) . ")' id = 'prenotazione' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#mostaOggetti' style='max-width:100px; min-width:90px'>" . $bottone . "</button><br><br>
-                
-                <button type='button' class='btn btn-warning' style='max-width:100px; min-width:90px'>Modifica</button>
-                <button type='button' class='btn btn-danger' style='max-width:100px; min-width:90px'>Elimina</button>
-                </div>
+                <button type='button' value = '" . $row["id"] . "' onclick = 'idElemento(" . $row["id"] . ", " . $row["categoria"] . "," . '"' . "" . $row["nome"] . "" . '"' . "," . $row["totQuantita"] . "," . $row["prenotabile"] . "," . $_SESSION["ruolo"] . "," . htmlspecialchars($descrizione) . ")' id = 'prenotazione' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#mostaOggetti' style='max-width:100px; min-width:90px'>" . $bottone . "</button>";
+                if ($_SESSION['ruolo'] != 1) {
+                    echo "<br><br>
+                    <a href='./pages/Azioni.php?agg=3&ogg_sing=" . $row["id"] . "' class='link-underline link-underline-opacity-0'>
+                        <button type='button' class='btn btn-warning' style='max-width:100px; min-width:90px'>Modifica</button>
+                    </a>
+                    <a href='./pages/Azioni.php?agg=1' class='link-underline link-underline-opacity-0'>
+                        <button type='button' class='btn btn-danger' style='max-width:100px; min-width:90px'>Elimina</button>
+                    </a>";
+                }
+                echo "</div>
                 </div>
                 </div>";
             }
         }
         $stmt->close();
         $conn->close();
+        if ($_SESSION['ruolo'] != 1) {
+            echo '<div class="col">
+                <div class="mx-auto shadow" id="carta">
+                    <a href="./pages/Azioni.php?agg=1" class="link-underline link-underline-opacity-0" id="round-button">
+                        <button id="round-button"><h1 style="font-size: 50px; margin-bottom:10px;">+</h1></button>
+                    </a>
+                </div>
+            </div>';
+        }
         ?>
     </div>
 </div>
